@@ -1,4 +1,4 @@
-import {Application, send } from "https://deno.land/x/oak@v5.0.0/mod.ts";
+import { Application, send } from "https://deno.land/x/oak@v5.0.0/mod.ts";
 
 const app = new Application();
 
@@ -26,10 +26,12 @@ app.use(async (ctx) => {
         "/stylesheets/style.css",
         "/images/favicon.png"
     ];
+    if (fileWhiteList.includes(filePath)) {
+        await send(ctx, filePath, {
+            root: `${Deno.cwd()}/public`,
+        });
+    }
 
-    await send(ctx, filePath,{
-        root: `${Deno.cwd()}/public`,
-    });
 });
 
 app.use(async (ctx) => {
@@ -48,6 +50,6 @@ app.use(async (ctx) => {
 
 if (import.meta.main) {
     await app.listen({
-      port: PORT,
+        port: PORT,
     });
-  }
+}
