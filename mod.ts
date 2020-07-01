@@ -8,15 +8,28 @@ const PORT = 8000;
 
 await log.setup({
     handlers: {
-      console: new log.handlers.ConsoleHandler("INFO"),
+        console: new log.handlers.ConsoleHandler("INFO"),
     },
     loggers: {
-      default: {
-        level: "INFO",
-        handlers: ["console"],
-      },
+        default: {
+            level: "INFO",
+            handlers: ["console"],
+        },
     },
-  });
+});
+
+app.addEventListener("error",(event) => {
+    log.error(event.error);
+});
+
+app.use(async (ctx, next) => {
+    try {
+        await next();
+    } catch (error) {
+        ctx.response.body = "Internal Server error";
+        throw error;
+    }
+})
 
 app.use(async (ctx, next) => {
     await next();
