@@ -1,2 +1,2 @@
 # nasa-deno
-` deno run --allow-net --allow-read mod.ts
+`deno run --allow-net --allow-read mod.ts`
