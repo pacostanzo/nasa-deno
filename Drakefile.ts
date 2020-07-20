@@ -28,9 +28,9 @@ task("denon-install", [], async function () {
 
 desc("Running API Tests");
 task("test", [], async function () {
-    await sh(
-      "PORT=8000 deno test --allow-read",
-    );
-  });
+  await sh(
+    "PORT=8000 deno test --allow-read",
+  );
+});
 
 run();

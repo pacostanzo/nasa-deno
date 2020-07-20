@@ -4,7 +4,8 @@ import api from "./api.ts";
 
 const app = new Application();
 
-const PORT = 8000;
+const env = Deno.env.toObject()
+const PORT: number = Number(env.PORT) || 8000;
 
 await log.setup({
   handlers: {
@@ -31,7 +32,7 @@ app.use(async (ctx, next) => {
   }
 });
 
-app.use(async function(ctx, next) {
+app.use(async function (ctx, next) {
   await next();
   const time = ctx.response.headers.get("X-Response-Time");
   log.info(`${ctx.request.method} ${ctx.request.url}: ${time}`);
