@@ -1,1 +1,1 @@
-web: deno run --allow-net=:${PORT} --cached-only Drakefile.ts --port=${PORT}
+web: deno run --allow-net=:${PORT} --cached-only src/mod.ts --port=${PORT}
