@@ -29,5 +29,4 @@ Browse to the Mission Control front end at http://localhost:8000/index.html and 
 
 ## Locking Dependencies
 
-After adding a dependency, run `deno run -A Drakefile.ts cache` to update the local module cache and create a corresponding lock file. This lock file can then be added to the repository.
-
+After adding a dependency, run `deno run -A Drakefile.ts cache` to update the local module cache and create a corresponding lock file. This lock file can then be added to the repository..
